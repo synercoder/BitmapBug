@@ -60,7 +60,10 @@ public class BmpSavedWrong
     {
         using (var ms = new MemoryStream())
         {
-            input.SaveAsBmp(ms);
+            var quantizer = SixLabors.ImageSharp.Processing.KnownQuantizers.Octree;
+            quantizer.Options.Dither = null;
+            input.SaveAsBmp(ms, new SixLabors.ImageSharp.Formats.Bmp.BmpEncoder() { Quantizer = quantizer });
+
             ms.Position = 0;
 
             return Image.Load<Rgb24>(ms);
