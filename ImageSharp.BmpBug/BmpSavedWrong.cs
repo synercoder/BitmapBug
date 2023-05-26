@@ -7,6 +7,7 @@ namespace ImageSharp.BmpBug;
 
 public class BmpSavedWrong
 {
+    // Fails on ImageSharp >= 2.0.0
     [Fact]
     public void File_SaveAndReopen_Should_Results_In_Same_PixelData()
     {
@@ -22,6 +23,7 @@ public class BmpSavedWrong
         Assert.Equal(originalPixelData, saveAndReopenedPixelData);
     }
 
+    // Always succeeds
     [Fact]
     public void PixelArray_SaveAndReopen_Should_Results_In_Same_PixelData()
     {
@@ -38,6 +40,7 @@ public class BmpSavedWrong
         Assert.Equal(originalPixelData, saveAndReopenedPixelData);
     }
 
+    // Always succeeds
     [Fact]
     public void PixelArrayAndFile_Have_Same_PixelData()
     {
